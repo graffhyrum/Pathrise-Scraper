@@ -1,0 +1,6 @@
+.env
+data/
+filled/
+node_modules/
+bun.lockb
+.idea/

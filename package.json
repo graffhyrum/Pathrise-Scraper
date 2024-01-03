@@ -1,0 +1,45 @@
+{
+  "name": "pathrise_scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@playwright/test": "^1.40.1",
+    "dotenv": "^16.3.1",
+    "pdf-lib": "^1.17.1",
+    "playwright": "latest",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@playwright/browser-chromium": "^1.40.1",
+    "@types/bun": "latest",
+    "@types/node": "20.10.6",
+    "esbuild": "^0.19.11",
+    "esbuild-register": "^3.5.0",
+    "gts": "^5.2.0",
+    "tslib": "^2.6.2",
+    "typescript": "~5.3.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "prettier": "gts/.prettierrc.json",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
