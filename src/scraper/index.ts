@@ -1,7 +1,7 @@
 import {chromium} from 'playwright-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import {expect} from '@playwright/test';
-import {type AppProcess} from '../interfaces/zod_schema/index';
+import {type AppProcess} from '../interfaces/zod_schema';
 import type {TwcApp} from '../interfaces/twcApps';
 import {assertIsAppsSchema} from '../interfaces/zod_schema/assertions';
 import {handlers} from '../util/handlers';
@@ -53,6 +53,8 @@ chromium
       await browser.close();
 
       async function doLogin() {
+        await page.getByRole('button', {name: 'Log In with Google'}).click();
+
         await fillEmail();
         await clickNext();
         await fillPassword();
@@ -118,10 +120,17 @@ chromium
 function getLatestStage(app: AppProcess) {
   const stages = app.stages;
   const len = stages.length;
+  // The app should have at least 1 stage, so throw if there are none
+  if (len === 0)
+    throw new Error(`No stages found in app:\n
+${JSON.stringify(app, null, 2)}`);
+  // if only one stage, return it
   if (len === 1) return stages[0];
+  // if more than one stage, return the one with the most recent date
   return stages.reduce((acc, stage) => {
-    const thisDate = Date.parse(stage.date);
-    const accDate = Date.parse(acc.date);
+    // stages aren't guaranteed to have a date, so check for it
+    const thisDate = stage.date ? Date.parse(stage.date) : 0;
+    const accDate = acc.date ? Date.parse(acc.date) : 0;
     if (thisDate > accDate && thisDate <= Date.now()) return stage;
     return acc;
   });
