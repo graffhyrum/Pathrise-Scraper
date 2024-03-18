@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {pipelineConnectionSchema} from './zod_schema/index';
+import {pipelineConnectionSchema} from './zod_schema';
 
 export const twcAppSchema = z.object({
   date: z.string(),

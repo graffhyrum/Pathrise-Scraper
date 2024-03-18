@@ -15,6 +15,10 @@ export const handlers = () => {
     };
     const set = (data: unknown) => {
       assertIsRootSchema(data);
+      // make diretory if it doesn't exist
+      if (!fs.existsSync('data')) {
+        fs.mkdirSync('data');
+      }
       fs.writeFileSync(paths.data, JSON.stringify(data, null, 2));
     };
 
