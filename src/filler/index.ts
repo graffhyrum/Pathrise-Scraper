@@ -5,7 +5,6 @@ import {assertIsTwcApps, type TwcApp} from '../interfaces/twcApps';
 import {fillAnEntry, fillDefaults} from './utils';
 import {handlers} from '../util/handlers';
 
-// const formPdfBytes = fs.readFileSync(paths.pdfTemplate);
 const formPdfBytes = handlers().pdfTemplateHandler().get();
 // 5 entries per log
 const data = handlers().twcAppsHandler().get();
