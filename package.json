@@ -8,17 +8,17 @@
     "clean": "gts clean",
     "compile": "tsc",
     "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run lint"
+    "prepare": "bun run compile",
+    "pretest": "bun run compile",
+    "posttest": "bun run lint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@playwright/test": "^1.40.1",
-    "dotenv": "^16.3.1",
+    "@playwright/test": "^1.42.1",
+    "dotenv": "^16.4.5",
     "pdf-lib": "^1.17.1",
     "playwright": "latest",
     "playwright-extra": "^4.3.6",
@@ -26,14 +26,14 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@playwright/browser-chromium": "^1.40.1",
+    "@playwright/browser-chromium": "^1.42.1",
     "@types/bun": "latest",
-    "@types/node": "20.10.6",
-    "esbuild": "^0.19.11",
+    "@types/node": "20.11.28",
+    "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
     "gts": "^5.2.0",
     "tslib": "^2.6.2",
-    "typescript": "~5.3.3"
+    "typescript": "~5.4.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
